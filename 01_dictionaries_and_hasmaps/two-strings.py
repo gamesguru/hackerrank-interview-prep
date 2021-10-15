@@ -16,10 +16,15 @@ import sys
 #
 
 def twoStrings(s1, s2):
-    # Write your code here
+    set1 = set(x for x in s1)
+    set2 = set(x for x in s2)
+    for c in set1:
+        if c in set2:
+            return 'YES'
+    # print(set1)
+    return 'NO'
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     q = int(input().strip())
 
@@ -30,6 +35,4 @@ if __name__ == '__main__':
 
         result = twoStrings(s1, s2)
 
-        fptr.write(result + '\n')
-
-    fptr.close()
+        print(result)
