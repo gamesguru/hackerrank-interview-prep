@@ -15,16 +15,18 @@ import sys
 #  2. STRING s2
 #
 
+
 def twoStrings(s1, s2):
     set1 = set(x for x in s1)
     set2 = set(x for x in s2)
     for c in set1:
         if c in set2:
-            return 'YES'
+            return "YES"
     # print(set1)
-    return 'NO'
+    return "NO"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
 
     q = int(input().strip())
 

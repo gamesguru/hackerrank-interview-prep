@@ -14,6 +14,7 @@ import sys
 #  2. STRING_ARRAY note
 #
 
+
 def checkMagazine(magazine, note):
     m_dict = {}
     for m_word in magazine:
@@ -38,12 +39,12 @@ def checkMagazine(magazine, note):
             # print(n_word)
             # print(n_dict[n_word])
             # print(m_dict[n_word])
-            print('No')
+            print("No")
             return
-    print('Yes')
+    print("Yes")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     first_multiple_input = input().rstrip().split()
 
     m = int(first_multiple_input[0])
