@@ -67,16 +67,34 @@ def print_doubly_linked_list(
 def sortedInsert(llist, data):
     node = llist
 
-    while node.next and node.next.data < data:
-        node = node.next
+    while True:
+        print("@", node.data)
+        if node.next and node.next.data < data:
+            node = node.next
+            print("->", node.data)
+            continue
+        break
 
-    print(str(node.data))
+    print("end @", str(node.data))
 
+    # middle
+    #       _
     # a <-> b <-> c <-> d
     # a <-> b <-> e <-> c <-> d
     #       *************
+    # start
+    # _
+    # a <-> b
+    # e <-> a <-> b
+    # *******
+    # end
+    #       _
+    # a <-> b
+    # a <-> b <-> e
+    #       *******
 
     new_block = DoublyLinkedListNode(data)
+
     new_block.prev = node
     new_block.next = node.next
 
@@ -94,12 +112,23 @@ if __name__ == "__main__":
     for t_itr in range(t):
         llist = DoublyLinkedList()
 
-        input_list = [1, 3, 4, 10]
+        data = 1
+        input_list = [2, 3, 4]
+        # data = 5
+        # input_list = [1, 3, 4, 10]
+
+        print("insert", data)
+
         for llist_item in input_list:
             llist.insert_node(llist_item)
 
-        data = 5
+        print("PRINT LIST - BEFORE")
+        print_doubly_linked_list(llist.head, " ")
 
+        print("RUN INSERT ALGO...")
         llist1 = sortedInsert(llist.head, data)
+        print("... DONE INSERTING!")
 
+        print()
+        print("PRINT LIST - AFTER")
         print_doubly_linked_list(llist1, " ")
