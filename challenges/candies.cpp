@@ -25,10 +25,8 @@ long candies(int n, vector<int> arr) {
 
     long total = 0;
     int c = 1;
-    int i = 0;
-    while (i < n) {
-        // TODO: this?
-        i++;
+    for (int i=0; i<n-1; i++) {
+        while (arr[i]
     }
 
     std::cout << total << "\n";
