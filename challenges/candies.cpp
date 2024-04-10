@@ -5,6 +5,12 @@ using namespace std;
 string ltrim(const string &);
 string rtrim(const string &);
 
+void printArr(vector<int> arr) {
+    for(int i: arr)
+        std::cout << i << " ";
+    std::cout << "\n";
+}
+
 /*
  * Complete the 'candies' function below.
  *
@@ -15,6 +21,18 @@ string rtrim(const string &);
  */
 
 long candies(int n, vector<int> arr) {
+    printArr(arr);
+
+    long total = 0;
+    int c = 1;
+    int i = 0;
+    while (i < n) {
+        // TODO: this?
+        i++;
+    }
+
+    std::cout << total << "\n";
+    return total;
 }
 
 int main()
