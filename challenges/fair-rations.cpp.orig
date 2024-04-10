@@ -40,7 +40,7 @@ string fairRations(vector<int> B) {
     }
     // count adjacent odds
     for (int i=0; i<=B.size(); i++) {
-        if (B[i]%2 == 1 && B[i+1]%2 == 1)
+        if (B[i]   %2 == 1 && B[i+1]%2 == 1)
             n_odds_adjacent++;
     }
     std::cout << "(len=" << B.size();
@@ -59,7 +59,8 @@ string fairRations(vector<int> B) {
     return "UNKNOWN";
 }
 
-int main() {
+int main()
+{
     ofstream fout(getenv("OUTPUT_PATH"));
 
     string N_temp;
