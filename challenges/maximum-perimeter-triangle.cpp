@@ -6,6 +6,22 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
+void printArr(vector<int> arr) {
+    for (int i: arr)
+        std::cout << i << " ";
+    std::cout << "\n";
+}
+
+bool triDegen(int a, int b, int c) {
+    // two sides equal to the third, colinear
+    if (a + b == c or a == b + c or b == a + c)
+        return true;
+    // two sides shorter than third, can't reach
+    if (a > b + c or b > a + c or c > b + c)
+        return true;
+    return false;
+}
+
 /*
  * Complete the 'maximumPerimeterTriangle' function below.
  *
@@ -14,7 +30,27 @@ vector<string> split(const string &);
  */
 
 vector<int> maximumPerimeterTriangle(vector<int> sticks) {
+    int n = sticks.size();
 
+    // sort
+    std::sort(sticks.begin(), sticks.end(), std::greater<int>());
+
+    // TODO: fill in
+    vector<int> result(sticks.size());
+    for (int i=0; i<n-2; i++) {
+        for (int j=i+1; j<n-1; j++) {
+            for (int k=j+1; k<n; k++) {
+                // check for degeneracy
+                if (triDegen(sticks[i], sticks[j], sticks[k]))
+                    continue;
+                // return first largest triangle (is this right?)
+                result = vector<int> {sticks[i], sticks[j], sticks[k]};
+                std::sort(result.begin(), result.end());
+                return result;
+            }
+        }
+    }
+    return vector<int> {-1};
 }
 
 int main() {
