@@ -4,7 +4,7 @@ using namespace std;
 
 string ltrim(const string &);
 string rtrim(const string &);
-
+void printArr(const vector<string>);
 /*
  * Complete the 'gridChallenge' function below.
  *
@@ -13,7 +13,28 @@ string rtrim(const string &);
  */
 
 string gridChallenge(vector<string> grid) {
+    int n = grid.size();
 
+    // sort each row's elements
+    printArr(grid);
+    for (int i=0; i<n; i++) {
+        std::sort(grid[i].begin(), grid[i].end());
+    }
+    std::cout << "\n";
+    printArr(grid);
+
+    // look for any out of order column element, return NO if found
+    for (int i=0; i<n-1; i++) {
+        for (int j=0; j<n; j++) {
+            if (grid[i][j] > grid[i+1][j]) {
+                std::cout << "NO" << "\n\n\n";
+                return "NO";
+            }
+        }
+    }
+
+    std::cout << "YES" << "\n\n\n";
+    return "YES";
 }
 
 int main() {
@@ -47,6 +68,11 @@ int main() {
     fout.close();
 
     return 0;
+}
+
+void printArr(vector<string> arr) {
+    for (string s: arr)
+        std::cout << s << "\n";
 }
 
 string ltrim(const string &str) {
