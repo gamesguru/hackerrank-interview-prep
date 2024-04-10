@@ -39,24 +39,17 @@ string fairRations(vector<int> B) {
      */
 
     int n_odds = 0;
-    int n_odds_adjacent = 0;
+    int n_loaves = 0;
 
     // initial loop through data
-    std::cout << "B= ";
     for (int i: B) {
         std::cout << i << ' ';
         if (i % 2 == 1) {
             n_odds++;
         }
     }
-    // count adjacent odds
-    for (int i=0; i<=B.size(); i++) {
-        if (B[i]%2 == 1 && B[i+1]%2 == 1)
-            n_odds_adjacent++;
-    }
-    std::cout << "(len=" << B.size();
-    std::cout << ", n_odds_adjacent=" << n_odds_adjacent;
-    std::cout << ", n_odds=" << n_odds << ")" << "\n";
+    std::cout << "B= (len=" << B.size() << ", n_odds=" << n_odds << ")";
+    std::cout << "\n";
 
     // return if odd number of odds (impossible to solve due to invariant constraint)
     if (n_odds % 2 == 1) {
@@ -65,9 +58,18 @@ string fairRations(vector<int> B) {
     }
 
     // otherwise, compute the minimum number of bread loaves needed
+    for (int i = 0; i < B.size(); i++) {
+        // add loaf to odd and next neighbor at each step of the loop
+        if (B[i] % 2 == 1) {
+            std::cout << B[i] << " and " << B[i + 1] << " eat bread" << "\n";
+            B[i]++;
+            B[i + 1]++;
+            n_loaves += 2;
+        }
+    }
 
-    std::cout << "UNKNOWN" << "\n";
-    return "UNKNOWN";
+    std::cout << "n_loaves= " << n_loaves << "\n";
+    return to_string(n_loaves);
 }
 
 int main() {
