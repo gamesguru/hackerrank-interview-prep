@@ -22,6 +22,17 @@ string fairRations(vector<int> B) {
      * 2 2 3 3 3 ans= NO       [3 inversions]
      * 2 3 4 5 6 ans= 4 loaves [2 inversions]
      *
+     * 2 3 4 5 5 5 6
+     * 2 4 5 5 5 5 6
+     * 2 4 6 6 5 5 6
+     * 2 4 6 6 6 6 6 --> 6 loaves total
+     *
+     * 2 3 6 5 4 5 6 5
+     * 2 4.7 5 4 5 6 5
+     * 2 4 8.6 4 5 6 5
+     * 2 4 8 6 4 6.5 5
+     * 2 4 8 6 4 6 6.6 --> 8 loaves total
+     *
      * Conjecture:
      *              n_loaves = 2 * n_inversions (if n_inversions is even)
      *              NO solution                 (if n_inversions is odd)
