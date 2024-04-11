@@ -6,6 +6,8 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
+// Prepare > Algorithms > Greedy (Easy)
+
 /*
  * Complete the 'toys' function below.
  *
@@ -13,8 +15,36 @@ vector<string> split(const string &);
  * The function accepts INTEGER_ARRAY w as parameter.
  */
 
-int toys(vector<int> w) {
+int toys(vector<int> weights) {
+    // sort
+    std::sort(weights.begin(), weights.end());
 
+    // load into set
+    set<int> w(weights.begin(), weights.end());
+
+    // print
+    for (int i: w)
+        std::cout << i << " ";
+    std::cout << "\n";
+
+    // divide into containers
+    int n_containers = 0;
+    int floor = -1;
+    for (int i: w) {
+        if (floor == -1) {
+            floor = i;
+            n_containers++;
+        }
+        if (i - 4 <= floor)
+            continue;
+        else {
+            floor = i;
+            n_containers++;
+        }
+    }
+
+    std::cout << "\n" << n_containers << "\n";
+    return n_containers;
 }
 
 int main() {
