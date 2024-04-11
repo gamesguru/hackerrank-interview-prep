@@ -6,6 +6,8 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
+// Prepare > Algorithms > Warmup (Easy)
+
 /*
  * Complete the 'simpleArraySum' function below.
  *
@@ -14,6 +16,10 @@ vector<string> split(const string &);
  */
 
 int simpleArraySum(vector<int> ar) {
+    int total = 0;
+    for (int i: ar)
+        total += i;
+    return total;
 }
 
 int main() {
