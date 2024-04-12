@@ -6,6 +6,8 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
+// Prepare > Algorithms > Greedy (Easy)
+
 /*
  * Complete the 'twoArrays' function below.
  *
@@ -17,7 +19,14 @@ vector<string> split(const string &);
  */
 
 string twoArrays(int k, vector<int> A, vector<int> B) {
+    std::sort(A.begin(), A.end());
+    std::sort(B.begin(), B.end(), std::greater<int>());
 
+    for (int i=0; i<A.size(); i++) {
+        if (A[i] + B[i] < k)
+            return "NO";
+    }
+    return "YES";
 }
 
 int main()
