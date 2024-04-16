@@ -2,16 +2,18 @@
 
 using namespace std;
 
-int solution(vector<int> arr, int days) {
+int solution(vector<int> arr, int days_til_exam) {
     // number of chapters
     int n_chaps = arr.size();
     // longest chapter
     int m = *max_element(arr.begin(), arr.end());
+
     std::cout << "num of chapters: " << n_chaps << endl;
     std::cout << "largest chapter: " << m << endl;
+    std::cout << "days until exam: " << days_til_exam << endl;
 
     // can't read more than 1 chapter per day
-    if (n_chaps > days)
+    if (n_chaps > days_til_exam)
         return -1;
 
     // find the minimum solution
@@ -19,44 +21,39 @@ int solution(vector<int> arr, int days) {
         std::cout << endl << "testing pages per day: " << ppd << endl;
 
         // iterate through the list, knocking out chapters
-        int days = 0;
-        for (int i=0; i<n_chaps; i++) {
-            std::cout << "CHAPTER " << i << endl;
+        int days_read = 0;
+        int chap_index = 0;
 
-            // int pages = 0;
-            while (arr[i] > 0) {
-                std::cout << "Pages remaining " << arr[i] << endl;
-                arr[i] -= ppd;
-                days++;
+        for (chap_index=0; chap_index<n_chaps; chap_index++) {
+            std::cout << "CHAPTER " << chap_index << endl;
+
+            // go for however many days to finish this chapter
+            int pages_read = 0;
+
+            while (pages_read < arr[chap_index]) {
+                std::cout << "Pages remaining " << arr[chap_index] - pages_read
+                          << endl;
+                pages_read += ppd;
+                days_read++;
             }
-        }
-        std::cout << "Read " << n_chaps << " in " << days << " days" << endl;
-        // int chapters = 0;
-        // int pages = 0;
-        // int day = 0;
-        // while (pages < ppd) {
-        //     if (arr[day] < ppd) {
-        //         pages += arr[day];
-        //         chapters++;
-        //     } else if (pages == ppd) {
-        //         pages += arr[day];
-        //     } else {
-        //         pages += ppd;
-        //     }
-        //     std::cout << "Read " << pages << " on day #" << day << endl;
-        //     day++;
-        // }
-        // if (day >= n_chaps)
 
-        // for (int j=0; j<n_chaps; j++) {
-        //     int k = 0;
-        //     while (k<i) {
-        //         // pop off all chapters we can finish fully in "p" pages
-        //     }
-        // }
+            // break out if we exceed the days til the exam
+            if (days_read >= days_til_exam)
+                break;
+        }
+
+        // if we didn't finish all chapters or we exceeded days til test, fail
+        if (chap_index < n_chaps - 1 or days_read > days_til_exam) {
+            std::cout << "Failed to complete book" << endl;
+        } else {
+            std::cout << "Finished BOOK in " << days_read
+                      << " days (" << ppd << " pages per day)" << endl;
+            return ppd;
+        }
     }
 
     // return max(chapter_length) since nothing smaller solved it
+    // note that we iterated up to m-1, and m is guaranteed to solve
     return m;
 }
 
