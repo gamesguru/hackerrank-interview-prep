@@ -8,9 +8,9 @@ int solution(vector<int> arr, int days_til_exam) {
     // longest chapter
     int m = *max_element(arr.begin(), arr.end());
 
-    std::cout << "num of chapters: " << n_chaps << endl;
-    std::cout << "largest chapter: " << m << endl;
-    std::cout << "days until exam: " << days_til_exam << endl;
+    // std::cout << "num of chapters: " << n_chaps << endl;
+    // std::cout << "largest chapter: " << m << endl;
+    // std::cout << "days until exam: " << days_til_exam << endl;
 
     // can't read more than 1 chapter per day
     if (n_chaps > days_til_exam)
@@ -18,21 +18,21 @@ int solution(vector<int> arr, int days_til_exam) {
 
     // find the minimum solution
     for (int ppd=1; ppd<m; ppd++) {
-        std::cout << endl << "testing pages per day: " << ppd << endl;
+        // std::cout << endl << "testing pages per day: " << ppd << endl;
 
         // iterate through the list, knocking out chapters
         int days_read = 0;
         int chap_index = 0;
 
         for (chap_index=0; chap_index<n_chaps; chap_index++) {
-            std::cout << "CHAPTER " << chap_index << endl;
+            // std::cout << "CHAPTER " << chap_index << endl;
 
             // go for however many days to finish this chapter
             int pages_read = 0;
 
             while (pages_read < arr[chap_index]) {
-                std::cout << "Pages remaining " << arr[chap_index] - pages_read
-                          << endl;
+                // std::cout << "Pages remaining " << arr[chap_index] - pages_read
+                //           << endl;
                 pages_read += ppd;
                 days_read++;
             }
@@ -44,10 +44,10 @@ int solution(vector<int> arr, int days_til_exam) {
 
         // if we didn't finish all chapters or we exceeded days til test, fail
         if (chap_index < n_chaps - 1 or days_read > days_til_exam) {
-            std::cout << "Failed to complete book" << endl;
+            // std::cout << "Failed to complete book" << endl;
         } else {
-            std::cout << "Finished BOOK in " << days_read
-                      << " days (" << ppd << " pages per day)" << endl;
+            // std::cout << "Finished BOOK in " << days_read
+            //           << " days (" << ppd << " pages per day)" << endl;
             return ppd;
         }
     }
