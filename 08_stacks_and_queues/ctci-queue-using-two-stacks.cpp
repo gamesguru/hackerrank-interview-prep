@@ -12,22 +12,26 @@ class MyQueue {
 public:
     stack<int> stack_newest_on_top, stack_oldest_on_top;
     void push(int x) {
-        while(!stack_oldest_on_top.empty()) {
-            stack_newest_on_top.push(stack_oldest_on_top.top());
-            stack_oldest_on_top.pop();
-        }
         stack_newest_on_top.push(x);
-        while(!stack_newest_on_top.empty()) {
-            stack_oldest_on_top.push(stack_newest_on_top.top());
-            stack_newest_on_top.pop();
-        }
     }
 
     void pop() {
+        if(stack_oldest_on_top.empty()){
+            while(!stack_newest_on_top.empty()) {
+                stack_oldest_on_top.push(stack_newest_on_top.top());
+                stack_newest_on_top.pop();
+            }
+        }
         stack_oldest_on_top.pop();
     }
 
     int front() {
+        if(stack_oldest_on_top.empty()){
+            while(!stack_newest_on_top.empty()) {
+                stack_oldest_on_top.push(stack_newest_on_top.top());
+                stack_newest_on_top.pop();
+            }
+        }
         return stack_oldest_on_top.top();
     }
 };
