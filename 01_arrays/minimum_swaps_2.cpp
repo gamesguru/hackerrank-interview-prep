@@ -21,8 +21,8 @@ size_t find_min(vector<int>& nums, size_t beginning) {
 
 int sort(vector<int>& vec) {
     int n_swaps = 0;
-    // size_t min_ind = find_min(vec, 0);
-    // cout << min_ind << endl;
+    size_t min_ind = find_min(vec, 0);
+    cout << min_ind << endl;
     for(int i = 0; i < vec.size(); i++) {
         size_t min_ind = find_min(vec, i);
         //cout << min_ind << endl;
