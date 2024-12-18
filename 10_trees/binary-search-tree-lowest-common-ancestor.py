@@ -49,8 +49,11 @@ class Node:
 
 
 def lca(root: Node, v1: int, v2: int):
+    """Shane's solution"""
+
     def get_path(v: int, v_path: list[Node]):
         v_cur = root
+
         while v_cur.info != v:
             if v > v_cur.info:
                 v_cur = v_cur.right
@@ -62,24 +65,13 @@ def lca(root: Node, v1: int, v2: int):
     v2_path = [root]
     get_path(v1, v1_path)
     get_path(v2, v2_path)
-    # print(v1_path)
-    # print(v2_path)
+
     v_common = [x for x in v1_path if x in set(v2_path)]
-    # v_common = list(set(v1_path) & set(v2_path))
     return v_common[-1]
-    # common_nodes = []
-    # while len(v1_path) != 0 and len(v2_path) != 0:
-    #     # v1_path = [2,1]
-    #     # v2_path = [2,3,5,6]
-    #
-    #     v1_node = v1_path.pop(0)
-    #     v2_node = v2_path.pop(0)
-    #     if v1_node == v2_node:
-    #         common_nodes.append(v1_node)
-    # return common_nodes[len(common_nodes) - 1]
 
 
 def other_lca(root: Node, v1: int, v2: int) -> Node:
+    """Anton's solution"""
     curr_node = root
     while True:
         if (v1 < curr_node.info) and (v2 < curr_node.info):
