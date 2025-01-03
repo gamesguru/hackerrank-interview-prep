@@ -3,6 +3,7 @@
 using namespace std;
 
 string ltrim(const string &);
+
 string rtrim(const string &);
 
 /*
@@ -15,11 +16,26 @@ string rtrim(const string &);
  */
 
 vector<int> matchingStrings(vector<string> stringList, vector<string> queries) {
+    vector<int> counts(queries.size());
 
+    for (int i=0; i<queries.size(); i++) {
+        string query = queries[i];
+        int count = 0;
+
+        for (string item: stringList)
+            if (query == item)
+                count++;
+
+        // cout << count << endl;
+        counts[i] = count;
+    }
+
+    // for (int i: counts)
+    //     cout << i << " ";
+    return counts;
 }
 
-int main()
-{
+int main() {
     ofstream fout(getenv("OUTPUT_PATH"));
 
     string stringList_count_temp;
@@ -88,4 +104,3 @@ string rtrim(const string &str) {
 
     return s;
 }
-
