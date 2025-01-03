@@ -31,11 +31,13 @@ public:
 void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
     while (node) {
         fout << node->data;
+        cout << node->data;
 
         node = node->next;
 
         if (node) {
             fout << sep;
+            cout << sep;
         }
     }
 }
@@ -61,8 +63,9 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  *
  */
 SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
-
-
+    SinglyLinkedListNode* llist_new_head = new SinglyLinkedListNode(data);
+    llist_new_head->next = llist;
+    return llist_new_head;
 }
 
 int main()
