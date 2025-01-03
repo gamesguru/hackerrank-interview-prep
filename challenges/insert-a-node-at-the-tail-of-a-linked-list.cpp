@@ -6,7 +6,7 @@
 using namespace std;
 
 class SinglyLinkedListNode {
-public:
+  public:
     int data;
     SinglyLinkedListNode *next;
 
@@ -17,7 +17,7 @@ public:
 };
 
 class SinglyLinkedList {
-public:
+  public:
     SinglyLinkedListNode *head;
 
     SinglyLinkedList() {
@@ -59,20 +59,29 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  *
  */
 SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data) {
-  SinglyLinkedListNode* llist_new_last = new SinglyLinkedListNode(data);
+    SinglyLinkedListNode* llist_new_last = new SinglyLinkedListNode(data);
 
-  SinglyLinkedListNode* item = head;
-  while (item->next) {
-    item = item->next;
-  }
+    SinglyLinkedListNode* item = head;
+    while (item.next) {
+        item = item.next;
+    }
 
-  item->next = llist_new_last;
+    item->next = llist_new_last;
 
-  return llist_new_last;
+    return head;
 }
 
-int main()
-{
+// Test
+/**
+5
+141
+302
+164
+530
+474
+*/
+
+int main() {
     ofstream fout(getenv("OUTPUT_PATH"));
 
     SinglyLinkedList* llist = new SinglyLinkedList();

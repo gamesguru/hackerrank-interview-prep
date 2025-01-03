@@ -6,7 +6,7 @@
 using namespace std;
 
 class SinglyLinkedListNode {
-public:
+  public:
     int data;
     SinglyLinkedListNode *next;
 
@@ -17,7 +17,7 @@ public:
 };
 
 class SinglyLinkedList {
-public:
+  public:
     SinglyLinkedListNode *head;
     SinglyLinkedListNode *tail;
 
@@ -68,8 +68,7 @@ SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
     return llist_new_head;
 }
 
-int main()
-{
+int main() {
     ofstream fout(getenv("OUTPUT_PATH"));
 
     SinglyLinkedList* llist = new SinglyLinkedList();
